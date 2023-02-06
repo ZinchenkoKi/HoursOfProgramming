@@ -1,29 +1,30 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography.Xml;
-using System.Text;
-using System.Threading.Tasks;
+using System.Drawing;
 
 namespace HoursOfProgramming
 {
     internal class StopwatchOperation
     {
-        TimeInApp timeInApp = new TimeInApp();
+        ChangeLabels changeLabels = new ChangeLabels();
 
-        internal void StopwatchProcess(Label labelOne, Label labelTwo, Label labelThree)
+        internal void StopwatchProcess(TimeInApp timeInApp, Label labelOne, Label labelTwo, Label labelThree)
         {
-            if (CheckingNumber(timeInApp.minutes))
+            StopwatchTick(timeInApp, labelOne, labelTwo, labelThree);
+        }
+
+        private void StopwatchTick(TimeInApp timeInApp, Label labelOne, Label labelTwo, Label labelThree)
+        {
+            if (CheckingNumber(timeInApp.minutesInApp))
             {
-                ConvertToNextLevel(ref timeInApp.minutes, ref timeInApp.hours, labelTwo, labelThree);
+                UpdatingLabelValue(ref timeInApp.minutesInApp, ref timeInApp.hoursInApp, labelTwo, labelThree);
             }
-            else if (CheckingNumber(timeInApp.seconds)) 
+            else if (CheckingNumber(timeInApp.secondsInApp))
             {
-                ConvertToNextLevel(ref timeInApp.seconds, ref timeInApp.minutes, labelOne,labelTwo);
+                UpdatingLabelValue(ref timeInApp.secondsInApp, ref timeInApp.minutesInApp, labelOne, labelTwo);
             }
             else
             {
-                CourseOfSeconds(ref timeInApp.seconds, labelOne);
+                UpdatingLabelValue(ref timeInApp.secondsInApp, labelOne);
             }
         }
 
@@ -32,33 +33,38 @@ namespace HoursOfProgramming
             return values > 59 ? true : false;
         }
 
-        private void ConvertToNextLevel(ref int valuesTimeOne, ref int valuesTimeTwo, Label labelOne, Label labelTwo)
+        private void UpdatingLabelValue(ref int valuesTimeOne, ref int valuesTimeTwo, Label labelOne, Label labelTwo)
         {
             if (valuesTimeTwo < 9)
             {
-                valuesTimeOne = 0;
-                valuesTimeTwo++;
-                labelTwo.Text = $"0{valuesTimeTwo.ToString()}";
+                AdjustingIndicators(ref valuesTimeOne, ref valuesTimeTwo, labelOne);
+                changeLabels.UpTen(labelTwo, valuesTimeTwo);
             }
             else
             {
-                valuesTimeOne = 0;
-                valuesTimeTwo++;
-                labelTwo.Text = $"{valuesTimeTwo.ToString()}";
+                AdjustingIndicators(ref valuesTimeOne, ref valuesTimeTwo, labelOne);
+                changeLabels.AfterTen(labelTwo, valuesTimeTwo);
             }
         }
 
-        private void CourseOfSeconds(ref int valuesTime, Label label)
+        private void AdjustingIndicators(ref int valuesTimeOne, ref int valuesTimeTwo, Label labelOne)
+        {
+            valuesTimeOne = 0;
+            valuesTimeTwo++;
+            changeLabels.ResetMeaning(labelOne);
+        }
+
+        private void UpdatingLabelValue(ref int valuesTime, Label label)
         {
             if (valuesTime < 9)
             {
                 valuesTime++;
-                label.Text = $"0{valuesTime.ToString()}";
+                changeLabels.UpTen(label, valuesTime);
             }
             else
             {
                 valuesTime++;
-                label.Text = valuesTime.ToString();
+                changeLabels.AfterTen(label, valuesTime);
             }
         }
     }
