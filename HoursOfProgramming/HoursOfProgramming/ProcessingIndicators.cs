@@ -8,7 +8,7 @@ namespace HoursOfProgramming
         internal void ProcessingData(TimeInFile timeInFile, TimeInApp timeInApp)
         {
             DataOperations dataOperations = new DataOperations();
-            Path path = new Path();
+            PathFile path = new PathFile();
             string filePath = path.GettingFilePath();
             ReadingFile(timeInFile, filePath);
             dataOperations.SummationOfIndicators(timeInFile, timeInApp);

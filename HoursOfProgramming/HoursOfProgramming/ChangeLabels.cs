@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics.Metrics;
 
 namespace HoursOfProgramming
 {
@@ -7,7 +6,7 @@ namespace HoursOfProgramming
     {
         internal void OutputOfTotalHours(TimeInFile timeInFile, Label allHours)
         {
-            Path path = new Path();
+            PathFile path = new PathFile();
             ProcessingIndicators processing = new ProcessingIndicators();
             processing.ReadingFile(timeInFile, path.GettingFilePath());
             allHours.Text = timeInFile.hoursInFile.ToString();
@@ -27,6 +26,5 @@ namespace HoursOfProgramming
         {
             label.Text = $"{valuesTime.ToString()}";
         }
-       
     }
 }
