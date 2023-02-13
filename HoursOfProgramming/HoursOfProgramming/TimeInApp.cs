@@ -1,6 +1,6 @@
 ﻿namespace HoursOfProgramming
 {
-    internal class TimeInApp
+    public class TimeInApp
     {
         internal int hoursInApp;
         internal int minutesInApp;

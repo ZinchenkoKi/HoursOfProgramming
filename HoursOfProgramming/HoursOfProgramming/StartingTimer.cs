@@ -2,35 +2,26 @@
 
 namespace HoursOfProgramming
 {
-    internal class StartingTimer
+    public class StartingTimer
     {
-        internal void ActivationButton(System.Windows.Forms.Timer timer, Button button)
+        public void Start(System.Windows.Forms.Timer timer, Button button)
         {
-            ChangingButtonText(button);
-            ActivatingTimer(timer, button);
+            ChangingText changingText = new ChangingText();
+
+            changingText.ChangingButtonText(button);
+            CheckingForActivity(timer, button);
         }
 
-        private void ChangingButtonText(Button button)
+        private void CheckingForActivity(System.Windows.Forms.Timer timer, Button button)
         {
+            
             if (button.Text == "START")
             {
-                button.Text = "STOP";
+                timer.Enabled = false;
             }
             else
             {
-                button.Text = "START";
-            }
-        }
-
-        private void ActivatingTimer(System.Windows.Forms.Timer timer, Button button)
-        {
-            if (button.Text == "START")
-            {
-              timer.Enabled = false;
-            }
-            else
-            {
-              timer.Enabled = true;
+                timer.Enabled = true;
             }
         }
     }

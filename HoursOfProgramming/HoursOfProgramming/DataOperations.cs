@@ -2,16 +2,9 @@
 
 namespace HoursOfProgramming
 {
-    internal class DataOperations
+    public class DataOperations
     {
-        internal void SummationOfIndicators(TimeInFile timeInFile, TimeInApp timeInApp)
-        {
-            timeInFile.secondsInFile += timeInApp.secondsInApp;
-            timeInFile.minutesInFile += timeInApp.minutesInApp;
-            timeInFile.hoursInFile += timeInApp.hoursInApp;
-        }
-
-        internal  TimeInFile DataConversion(TimeInFile timeInFile)
+        public  TimeInFile DataConversion(TimeInFile timeInFile)
         {
             if (timeInFile.secondsInFile > 59)
             {

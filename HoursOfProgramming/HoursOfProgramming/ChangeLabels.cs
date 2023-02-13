@@ -2,29 +2,46 @@
 
 namespace HoursOfProgramming
 {
-    internal class ChangeLabels
+    public class ChangeLabels
     {
-        internal void OutputOfTotalHours(TimeInFile timeInFile, Label allHours)
+        Adjusting adjusting = new Adjusting();
+
+        public void UpdatingLabel(ref int valuesTimeOne, ref int valuesTimeTwo, Label labelOne, Label labelTwo)
         {
-            PathFile path = new PathFile();
-            ProcessingIndicators processing = new ProcessingIndicators();
-            processing.ReadingFile(timeInFile, path.GettingFilePath());
-            allHours.Text = timeInFile.hoursInFile.ToString();
+            if (valuesTimeTwo < 9)
+            {
+                adjusting.AdjustingIndicators(ref valuesTimeOne, ref valuesTimeTwo, labelOne);
+                UpTen(labelTwo, valuesTimeTwo);
+            }
+            else
+            {
+                adjusting.AdjustingIndicators(ref valuesTimeOne, ref valuesTimeTwo, labelOne);
+                AfterTen(labelTwo, valuesTimeTwo);
+            }
         }
 
-        internal void ResetMeaning(Label labelOne)
+        public void UpdatingLabel(ref int valuesTime, Label label)
         {
-            labelOne.Text = "00";
+            if (valuesTime < 9)
+            {
+                valuesTime++;
+                UpTen(label, valuesTime);
+            }
+            else
+            {
+                valuesTime++;
+                AfterTen(label, valuesTime);
+            }
         }
 
-        internal void UpTen(Label label, int valuesTime)
+        private void UpTen(Label label, int valuesTime)
         {
             label.Text = $"0{valuesTime.ToString()}";
         }
 
-        internal void AfterTen(Label label, int valuesTime)
+        private void AfterTen(Label label, int valuesTime)
         {
             label.Text = $"{valuesTime.ToString()}";
-        }
+        }   
     }
 }
