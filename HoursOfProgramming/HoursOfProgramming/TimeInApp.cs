@@ -2,8 +2,8 @@
 {
     public class TimeInApp
     {
-        internal int hoursInApp;
-        internal int minutesInApp;
-        internal int secondsInApp;
+        public int HoursInApp { get; set; }
+        public int MinutesInApp { get; set; }
+        public int SecondsInApp { get; set; }
     }
 }

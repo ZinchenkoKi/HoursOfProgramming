@@ -4,13 +4,13 @@ namespace HoursOfProgramming
 {
     public partial class Form1 : Form
     {
-        AllHours allHours = new AllHours();
+        OutputAllHours allHours = new OutputAllHours();
         TimeInFile timeInFile = new TimeInFile();
         StartingTimer startingTimer = new StartingTimer();
-        StopwatchOperation stopwatchOperation = new StopwatchOperation();
+        StopwatchTick tick = new StopwatchTick();
         TimeInApp timeInApp = new TimeInApp();
-        UpdatingFile updatingFile = new UpdatingFile();
-        
+        ClosingApplication closingApplication = new ClosingApplication();
+
         public Form1()
         {
             InitializeComponent();
@@ -18,7 +18,7 @@ namespace HoursOfProgramming
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            allHours.OutputOfTotalHours(timeInFile, label7);
+            allHours.Output(timeInFile, label7);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -28,13 +28,12 @@ namespace HoursOfProgramming
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            stopwatchOperation.Tick(timeInApp, label3, label2, label1);
+            tick.Tick(timeInApp, label1, label2, label3);
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            updatingFile.Update(timeInFile, timeInApp);
-            this.Close();
+            closingApplication.Close(timeInFile, timeInApp);
         }
     }
 }

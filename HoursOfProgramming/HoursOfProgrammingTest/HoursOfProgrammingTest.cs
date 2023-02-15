@@ -7,8 +7,8 @@ namespace HoursOfProgrammingTest
     public class HoursOfProgrammingTest
     {
 
-
-        public void TrueOrFalse(bool result,int values)
+        [Test]
+        public void TrueOrFalse(int result, int values)
         {
            
         }
