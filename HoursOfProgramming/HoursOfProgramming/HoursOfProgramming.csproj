@@ -6,11 +6,17 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
-    <ApplicationIcon>icons\clock (2).ico</ApplicationIcon>
+    <ApplicationIcon>icons\11clock.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="icons\clock (2).ico" />
+    <Content Include="icons\11clock.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="PathFile">
+      <HintPath>..\..\..\PathFile\PathFile\bin\Debug\PathFile.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

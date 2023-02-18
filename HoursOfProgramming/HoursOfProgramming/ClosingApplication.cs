@@ -1,18 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace HoursOfProgramming
+﻿namespace HoursOfProgramming
 {
     public class ClosingApplication
     {
         SavingMetrics metrics = new SavingMetrics();
-        PathFile pathFile = new PathFile();
+        PathFile.Path path = new PathFile.Path();
         public void Close(TimeInFile timeInFile, TimeInApp timeInApp)
-        {
-            metrics.Save(timeInFile, timeInApp, pathFile.GettingPath());
+        { 
+            metrics.Save(timeInFile, timeInApp, path.GettingPath());
             Application.Exit();
         }
     }
